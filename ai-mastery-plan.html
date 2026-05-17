@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Mastery Roadmap — Your Path to the AI Economy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080910;
+    --bg2: #0f1018;
+    --bg3: #161824;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.14);
+    --gold: #e8a820;
+    --gold-dim: rgba(232,168,32,0.15);
+    --gold-glow: rgba(232,168,32,0.3);
+    --cream: #f0ead8;
+    --text: #c8c4b8;
+    --text-dim: #7a7870;
+    --phase1: #4a9eff;
+    --phase2: #a78bfa;
+    --phase3: #34d399;
+    --phase4: #fb923c;
+    --phase5: #e8a820;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(8,9,16,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Cormorant Garant', serif; font-size: 1.2rem; font-weight: 700; color: var(--cream); }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.78rem; font-weight: 500; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-badge { font-size: 0.68rem; font-weight: 600; padding: 4px 12px; background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold); border-radius: 20px; letter-spacing: 0.05em; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 2rem 5rem; position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(232,168,32,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(232,168,32,0.035) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute; width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,168,32,0.06) 0%, transparent 70%);
+    top: 0; left: 50%; transform: translateX(-50%); pointer-events: none;
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; text-align: center; position: relative; z-index: 1; animation: fadeUp 0.9s ease both; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+    border: 1px solid var(--border-strong); border-radius: 30px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 2rem; background: var(--bg2);
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.7); } }
+  h1 {
+    font-family: 'Cormorant Garant', serif; font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700; line-height: 1.05; color: var(--cream); margin-bottom: 1.5rem; letter-spacing: -0.02em;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 1.05rem; color: var(--text); max-width: 600px; margin: 0 auto 3rem; font-weight: 300; line-height: 1.85; }
+  .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Cormorant Garant', serif; font-size: 2.6rem; font-weight: 700; color: var(--cream); line-height: 1; }
+  .stat-num span { color: var(--gold); }
+  .stat-lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-top: 3px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px; padding: 14px 34px;
+    background: var(--gold); color: #000; font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.06em; text-transform: uppercase; border-radius: 4px; text-decoration: none; transition: all 0.25s;
+  }
+  .cta:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 10px 35px var(--gold-glow); }
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim);
+    animation: fadeIn 2s ease 1.2s both;
+  }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: lineAnim 2s ease-in-out infinite; }
+  @keyframes lineAnim { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+  /* PROFILE */
+  .profile-wrap { padding: 0 2rem 3rem; max-width: 1000px; margin: 0 auto; }
+  .profile-card {
+    background: var(--bg2); border: 1px solid var(--border-strong); border-left: 3px solid var(--gold);
+    border-radius: 8px; padding: 1.4rem 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+  }
+  .pi { flex: 1; min-width: 130px; }
+  .pi-lbl { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 3px; }
+  .pi-val { font-weight: 600; color: var(--cream); font-size: 0.92rem; }
+  .pi-div { width: 1px; height: 36px; background: var(--border); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+  .eyebrow { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); font-weight: 600; margin-bottom: 0.7rem; }
+  h2 { font-family: 'Cormorant Garant', serif; font-size: clamp(2rem, 4vw, 2.9rem); font-weight: 700; color: var(--cream); line-height: 1.1; margin-bottom: 0.9rem; letter-spacing: -0.01em; }
+  .lead { font-size: 0.97rem; color: var(--text); max-width: 600px; margin-bottom: 3rem; font-weight: 300; line-height: 1.85; }
+
+  /* NOTICE */
+  .notice {
+    background: var(--gold-dim); border: 1px solid rgba(232,168,32,0.22); border-radius: 8px;
+    padding: 1rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 2.5rem; font-size: 0.87rem;
+  }
+  .notice-ico { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+  .notice-txt { color: var(--text); line-height: 1.65; }
+  .notice-txt strong { color: var(--cream); }
+
+  /* TIMELINE BAR */
+  .tl-bar { display: flex; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 3.5rem; }
+  .tl-item { flex: 1; padding: 1.1rem 0.8rem; text-align: center; cursor: pointer; border-right: 1px solid var(--border); transition: background 0.2s; position: relative; }
+  .tl-item:last-child { border-right: none; }
+  .tl-item:hover { background: var(--bg3); }
+  .tl-n { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; margin-bottom: 3px; }
+  .tl-name { font-size: 0.75rem; font-weight: 600; color: var(--cream); margin-bottom: 2px; }
+  .tl-dur { font-size: 0.62rem; color: var(--text-dim); }
+  .tl-stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+
+  /* PHASE BLOCKS */
+  .phase { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; transition: border-color 0.3s; }
+  .phase:hover { border-color: var(--border-strong); }
+  .phase-hd {
+    padding: 1.8rem 2rem; display: flex; align-items: center; gap: 1.5rem;
+    cursor: pointer; background: var(--bg2); user-select: none;
+  }
+  .ph-num { font-family: 'Cormorant Garant', serif; font-size: 2.9rem; font-weight: 700; line-height: 1; opacity: 0.22; min-width: 48px; }
+  .ph-meta { flex: 1; }
+  .ph-tag { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 5px; }
+  .ph-title { font-family: 'Cormorant Garant', serif; font-size: 1.55rem; font-weight: 700; color: var(--cream); line-height: 1.2; margin-bottom: 3px; }
+  .ph-sub { font-size: 0.82rem; color: var(--text-dim); }
+  .ph-dur { text-align: right; min-width: 90px; }
+  .ph-months { font-family: 'Cormorant Garant', serif; font-size: 1.7rem; font-weight: 700; line-height: 1; }
+  .ph-mlbl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+  .chevron { width: 22px; height: 22px; color: var(--text-dim); transition: transform 0.3s; flex-shrink: 0; }
+  .phase.open .chevron { transform: rotate(180deg); }
+  .phase-bd { display: none; border-top: 1px solid var(--border); }
+  .phase.open .phase-bd { display: block; }
+  .ph-grid { padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .ph-col h4 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); font-weight: 600; margin-bottom: 0.9rem; }
+  .sk-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .sk-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text); line-height: 1.55; }
+  .sk-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+  .rs-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .rs-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.83rem; }
+  .tag { font-size: 0.58rem; font-family: 'JetBrains Mono', monospace; padding: 2px 7px; border-radius: 3px; font-weight: 500; flex-shrink: 0; text-transform: uppercase; margin-top: 2px; }
+  .tfree { background: rgba(52,211,153,0.12); color: #34d399; border: 1px solid rgba(52,211,153,0.28); }
+  .tpaid { background: rgba(251,146,60,0.12); color: #fb923c; border: 1px solid rgba(251,146,60,0.28); }
+  .ttool { background: rgba(74,158,255,0.12); color: #4a9eff; border: 1px solid rgba(74,158,255,0.28); }
+  .tbook { background: rgba(232,168,32,0.12); color: var(--gold); border: 1px solid rgba(232,168,32,0.28); }
+  .rs-name { color: var(--cream); font-weight: 500; font-size: 0.85rem; }
+  .rs-desc { color: var(--text-dim); font-size: 0.75rem; margin-top: 1px; }
+  .ph-outcome { margin: 0 2rem 2rem; padding: 1.1rem 1.4rem; border-radius: 8px; border-left: 3px solid; }
+  .po-lbl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 5px; }
+  .po-txt { font-size: 0.88rem; color: var(--text); line-height: 1.65; }
+
+  /* Colors */
+  .c1{color:var(--phase1)} .c2{color:var(--phase2)} .c3{color:var(--phase3)} .c4{color:var(--phase4)} .c5{color:var(--phase5)}
+  .b1{background:rgba(74,158,255,0.1);border-color:rgba(74,158,255,0.25)}
+  .b2{background:rgba(167,139,250,0.1);border-color:rgba(167,139,250,0.25)}
+  .b3{background:rgba(52,211,153,0.1);border-color:rgba(52,211,153,0.25)}
+  .b4{background:rgba(251,146,60,0.1);border-color:rgba(251,146,60,0.25)}
+  .b5{background:rgba(232,168,32,0.1);border-color:rgba(232,168,32,0.25)}
+  .o1{background:rgba(74,158,255,0.05);border-left-color:var(--phase1)}
+  .o2{background:rgba(167,139,250,0.05);border-left-color:var(--phase2)}
+  .o3{background:rgba(52,211,153,0.05);border-left-color:var(--phase3)}
+  .o4{background:rgba(251,146,60,0.05);border-left-color:var(--phase4)}
+  .o5{background:rgba(232,168,32,0.05);border-left-color:var(--phase5)}
+
+  /* TOOLS */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .tool-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; transition: border-color 0.2s, transform 0.2s; }
+  .tool-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .ti { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 0.8rem; }
+  .tn { font-weight: 600; color: var(--cream); font-size: 0.88rem; margin-bottom: 2px; }
+  .tu { font-size: 0.75rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 0.5rem; }
+  .tp { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'JetBrains Mono', monospace; }
+
+  /* MONEY */
+  .money-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .money-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+  .money-card:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+  .mc-stripe { position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: 10px 10px 0 0; }
+  .mc-tag { font-size: 0.63rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.7rem; }
+  .money-card h3 { font-family: 'Cormorant Garant', serif; font-size: 1.35rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; line-height: 1.2; }
+  .money-card p { font-size: 0.83rem; color: var(--text); margin-bottom: 1.1rem; line-height: 1.65; }
+  .earn { font-family: 'Cormorant Garant', serif; font-size: 1.55rem; font-weight: 700; color: var(--cream); }
+  .earn-lbl { font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; }
+  .mc-foot { font-size: 0.72rem; color: var(--text-dim); margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .mc-foot strong { color: var(--gold); }
+
+  /* WEEKLY */
+  .week-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+  .week-slot { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.3rem; text-align: center; }
+  .ws-day { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 0.5rem; }
+  .ws-act { font-size: 0.92rem; font-weight: 600; color: var(--cream); margin-bottom: 0.3rem; }
+  .ws-desc { font-size: 0.78rem; color: var(--text); line-height: 1.55; margin-bottom: 0.5rem; }
+  .ws-time { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--gold); }
+
+  /* MINDSET */
+  .mind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .mind-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s; }
+  .mind-card:hover { border-color: var(--border-strong); }
+  .mind-ico { font-size: 1.4rem; margin-bottom: 0.7rem; }
+  .mind-card h4 { font-size: 0.93rem; font-weight: 600; color: var(--cream); margin-bottom: 0.4rem; }
+  .mind-card p { font-size: 0.82rem; color: var(--text); line-height: 1.65; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; color: var(--text-dim); font-size: 0.78rem; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    .ph-grid { grid-template-columns: 1fr; }
+    .tl-name { font-size: 0.65rem; }
+    .week-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .pi-div { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AI<span>Mastery</span></div>
+  <ul class="nav-links">
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#money">Income</a></li>
+    <li><a href="#weekly">Weekly Plan</a></li>
+  </ul>
+  <div class="nav-badge">Personalised · May 2026</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="dot"></span> Personalised for Croydon, England · Complete Beginner Track</div>
+    <h1>Master <em>AI.</em><br>Build Your Empire.</h1>
+    <p class="hero-sub">A no-code-required, 18-month plan to go from complete beginner to SaaS founder and AI agency owner — built around your 1–3 hours a week.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">5<span>×</span></div><div class="stat-lbl">Phases</div></div>
+      <div class="stat"><div class="stat-num">18<span>mo</span></div><div class="stat-lbl">Full Plan</div></div>
+      <div class="stat"><div class="stat-num">£50<span>k+</span></div><div class="stat-lbl">Earning Target</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-lbl">Coding Required</div></div>
+    </div>
+    <a href="#roadmap" class="cta">Begin the Journey <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
+</div>
+
+<!-- PROFILE -->
+<div class="profile-wrap">
+  <div class="profile-card">
+    <div class="pi"><div class="pi-lbl">Background</div><div class="pi-val">Complete Beginner</div></div>
+    <div class="pi-div"></div>
+    <div class="pi"><div class="pi-lbl">Weekly Time</div><div class="pi-val">1–3 Hours</div></div>
+    <div class="pi-div"></div>
+    <div class="pi"><div class="pi-lbl">Goal 1</div><div class="pi-val">SaaS Products</div></div>
+    <div class="pi-div"></div>
+    <div class="pi"><div class="pi-lbl">Goal 2</div><div class="pi-val">AI Agency</div></div>
+    <div class="pi-div"></div>
+    <div class="pi"><div class="pi-lbl">Location</div><div class="pi-val">Croydon, UK 🇬🇧</div></div>
+    <div class="pi-div"></div>
+    <div class="pi"><div class="pi-lbl">Generated</div><div class="pi-val">May 2026</div></div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="eyebrow">The Full Roadmap</div>
+  <h2>18 Months to AI Mastery</h2>
+  <p class="lead">Designed for a complete beginner with 1–3 hours per week. No prior coding, no overwhelm — just consistent, compounding progress toward a real AI business that generates life-changing income.</p>
+
+  <div class="notice">
+    <div class="notice-ico">💡</div>
+    <div class="notice-txt"><strong>Beginner-first design:</strong> Every phase is achievable without writing code. "Vibe coding" means describing what you want and letting AI build it. You become the architect, not the programmer. This plan is sequenced to earn money as early as Month 5, not Month 18.</div>
+  </div>
+
+  <!-- TIMELINE BAR -->
+  <div class="tl-bar">
+    <div class="tl-item" onclick="toggleP(1)"><div class="tl-n c1">01</div><div class="tl-name">AI Literacy</div><div class="tl-dur">Mo. 1–3</div><div class="tl-stripe" style="background:var(--phase1)"></div></div>
+    <div class="tl-item" onclick="toggleP(2)"><div class="tl-n c2">02</div><div class="tl-name">Automation</div><div class="tl-dur">Mo. 4–6</div><div class="tl-stripe" style="background:var(--phase2)"></div></div>
+    <div class="tl-item" onclick="toggleP(3)"><div class="tl-n c3">03</div><div class="tl-name">Vibe Coding</div><div class="tl-dur">Mo. 7–10</div><div class="tl-stripe" style="background:var(--phase3)"></div></div>
+    <div class="tl-item" onclick="toggleP(4)"><div class="tl-n c4">04</div><div class="tl-name">Agentic AI</div><div class="tl-dur">Mo. 11–14</div><div class="tl-stripe" style="background:var(--phase4)"></div></div>
+    <div class="tl-item" onclick="toggleP(5)"><div class="tl-n c5">05</div><div class="tl-name">Launch & Scale</div><div class="tl-dur">Mo. 15–18</div><div class="tl-stripe" style="background:var(--phase5)"></div></div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase open" id="p1">
+    <div class="phase-hd" onclick="toggleP(1)">
+      <div class="ph-num c1">01</div>
+      <div class="ph-meta">
+        <div class="ph-tag b1 c1">Foundation</div>
+        <div class="ph-title">AI Literacy & Prompt Mastery</div>
+        <div class="ph-sub">Learn how LLMs work, master ChatGPT & Claude, build your daily AI habit</div>
+      </div>
+      <div class="ph-dur"><div class="ph-months c1">3</div><div class="ph-mlbl">months</div></div>
+      <svg class="chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+    </div>
+    <div class="phase-bd">
+      <div class="ph-grid">
+        <div class="ph-col">
+          <h4>What You'll Learn</h4>
+          <ul class="sk-list">
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>How Large Language Models work — explained in plain English, no jargon</li>
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>The difference between ChatGPT, Claude, Gemini, and Grok — and when to use each</li>
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>Prompt engineering: the art of giving AI instructions that produce great results</li>
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>System prompts, personas, and context management for consistent outputs</li>
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>Using AI for writing, research, planning, brainstorming, and problem-solving</li>
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>AI image generation with Midjourney and DALL-E — for clients and products</li>
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>AI safety basics: hallucinations, biases, and when not to trust the output</li>
+            <li><span class="sk-dot" style="background:var(--phase1)"></span>Building your first AI-assisted income: writing, content, and research services</li>
+          </ul>
+        </div>
+        <div class="ph-col">
+          <h4>Resources & Tools</h4>
+          <ul class="rs-list">
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Learn Prompting (learnprompting.org)</div><div class="rs-desc">The definitive free guide to prompt engineering — start here</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">DeepLearning.AI — ChatGPT Prompt Engineering</div><div class="rs-desc">Short course by OpenAI + Andrew Ng. ~1.5 hrs. Brilliant.</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Andrej Karpathy — "Intro to LLMs" (YouTube)</div><div class="rs-desc">The best non-technical explanation of how AI actually works</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Anthropic's Prompt Engineering Guide (docs.anthropic.com)</div><div class="rs-desc">Official Claude best practices — bookmark this forever</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Claude.ai Pro + ChatGPT Plus (~£20/mo each)</div><div class="rs-desc">Use both daily. Best investment you'll make. £40/mo total.</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Perplexity AI (perplexity.ai)</div><div class="rs-desc">AI research engine — replaces 80% of Google searches</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Matt Wolfe (YouTube)</div><div class="rs-desc">Weekly AI news and tutorials — subscribe immediately</div></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ph-outcome o1">
+        <div class="po-lbl c1">✓ Phase 1 Milestone — End of Month 3</div>
+        <div class="po-txt">You use AI daily. You can do in 10 minutes what takes others 2 hours. You understand the AI landscape and have started earning small amounts through AI-assisted writing, research, or content for local businesses. You have a daily AI habit that will compound for the rest of your life.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase" id="p2">
+    <div class="phase-hd" onclick="toggleP(2)">
+      <div class="ph-num c2">02</div>
+      <div class="ph-meta">
+        <div class="ph-tag b2 c2">Automation</div>
+        <div class="ph-title">No-Code AI Automation & Workflows</div>
+        <div class="ph-sub">Build automated systems using Make.com, n8n, and Zapier — without writing a single line of code</div>
+      </div>
+      <div class="ph-dur"><div class="ph-months c2">3</div><div class="ph-mlbl">months</div></div>
+      <svg class="chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+    </div>
+    <div class="phase-bd">
+      <div class="ph-grid">
+        <div class="ph-col">
+          <h4>What You'll Learn</h4>
+          <ul class="sk-list">
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Make.com (formerly Integromat) — the most powerful no-code automation platform</li>
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Building AI-powered workflows: email → AI summary → Slack notification, automatically</li>
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Connecting apps together: CRM + AI + Email without touching code</li>
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Automating social media content pipelines — write once, post everywhere</li>
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Notion AI for client knowledge bases, SOPs, and project management systems</li>
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Selling automations to local Croydon businesses — estate agents, clinics, restaurants</li>
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Building a basic agency offer and pricing your first service package</li>
+            <li><span class="sk-dot" style="background:var(--phase2)"></span>Cold outreach with AI: writing and sending personalised proposals at scale</li>
+          </ul>
+        </div>
+        <div class="ph-col">
+          <h4>Resources & Tools</h4>
+          <ul class="rs-list">
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Make.com Academy (academy.make.com)</div><div class="rs-desc">Official free video tutorials — all levels covered</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Liam Ottley (YouTube)</div><div class="rs-desc">Best channel for AI automation agencies — watch every video</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Skool AI Automation Community (free tier)</div><div class="rs-desc">Largest community of AI agency builders — UK members active</div></div></li>
+            <li><span class="tag tpaid">Course</span><div><div class="rs-name">AI Automation Agency Hub (AAA)</div><div class="rs-desc">The most practical AI agency course available — ~£300</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Make.com (free tier → £9/mo)</div><div class="rs-desc">Start free, upgrade when your first client pays</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Notion AI (£8/mo)</div><div class="rs-desc">Build client SOPs, knowledge bases, and systems</div></div></li>
+            <li><span class="tag tbook">Book</span><div><div class="rs-name">$100M Offers — Alex Hormozi (~£15)</div><div class="rs-desc">How to package and price your services irresistibly</div></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ph-outcome o2">
+        <div class="po-lbl c2">✓ Phase 2 Milestone — End of Month 6</div>
+        <div class="po-txt">You've built 3+ working automations and landed your first paying client — likely a local Croydon or London business willing to pay £300–£1,500 for something they currently do manually. You have your first proof of concept, your first testimonial, and your first real income from AI skills.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase" id="p3">
+    <div class="phase-hd" onclick="toggleP(3)">
+      <div class="ph-num c3">03</div>
+      <div class="ph-meta">
+        <div class="ph-tag b3 c3">Vibe Coding</div>
+        <div class="ph-title">Vibe Coding & AI-Assisted App Building</div>
+        <div class="ph-sub">Build real web apps and SaaS prototypes by describing what you want — no traditional coding required</div>
+      </div>
+      <div class="ph-dur"><div class="ph-months c3">4</div><div class="ph-mlbl">months</div></div>
+      <svg class="chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+    </div>
+    <div class="phase-bd">
+      <div class="ph-grid">
+        <div class="ph-col">
+          <h4>What You'll Learn</h4>
+          <ul class="sk-list">
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>"Vibe coding" — describing your app idea in plain English and letting AI build it</li>
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>Lovable.dev — the most powerful beginner app builder of 2025/26</li>
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>Bolt.new — full-stack apps that run directly in your browser</li>
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>Webflow for professional client websites (£500–£3k per project)</li>
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>How to deploy apps live on the internet for free (Vercel, Netlify)</li>
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>Validating SaaS ideas before investing time in building them</li>
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>Cursor IDE — reading and directing AI-written code as an architect</li>
+            <li><span class="sk-dot" style="background:var(--phase3)"></span>Database basics with Supabase — no SQL knowledge needed, AI handles it</li>
+          </ul>
+        </div>
+        <div class="ph-col">
+          <h4>Resources & Tools</h4>
+          <ul class="rs-list">
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Lovable.dev (~£20/mo)</div><div class="rs-desc">Describe an app → it builds it. The biggest shift you'll experience.</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Bolt.new (StackBlitz) — free tier</div><div class="rs-desc">Full-stack AI coding in the browser. No setup required.</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Cursor IDE (cursor.com) — free tier</div><div class="rs-desc">AI-first code editor — best for learning while building</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Webflow (webflow.com)</div><div class="rs-desc">Professional no-code websites — clients pay well for these</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Fireship (YouTube)</div><div class="rs-desc">Fast, brilliant tech tutorials. Watch even if you never code.</div></div></li>
+            <li><span class="tag tpaid">Course</span><div><div class="rs-name">Zero to Shipped (zerotoshipped.com)</div><div class="rs-desc">SaaS launch course designed for non-developers — ~£150</div></div></li>
+            <li><span class="tag tbook">Book</span><div><div class="rs-name">The Mom Test — Rob Fitzpatrick (~£10)</div><div class="rs-desc">How to validate ideas by talking to real customers</div></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ph-outcome o3">
+        <div class="po-lbl c3">✓ Phase 3 Milestone — End of Month 10</div>
+        <div class="po-txt">You have a live, working web application deployed on the internet. You're offering website builds and AI-powered web tools as a service. You've validated a SaaS idea with 5+ real people who've confirmed they'd pay for it. You understand the difference between what's worth building and what isn't.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase" id="p4">
+    <div class="phase-hd" onclick="toggleP(4)">
+      <div class="ph-num c4">04</div>
+      <div class="ph-meta">
+        <div class="ph-tag b4 c4">Advanced</div>
+        <div class="ph-title">Agentic AI & Intelligent Systems</div>
+        <div class="ph-sub">Build AI agents that work autonomously — the highest-value and most in-demand skill in the entire market right now</div>
+      </div>
+      <div class="ph-dur"><div class="ph-months c4">4</div><div class="ph-mlbl">months</div></div>
+      <svg class="chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+    </div>
+    <div class="phase-bd">
+      <div class="ph-grid">
+        <div class="ph-col">
+          <h4>What You'll Learn</h4>
+          <ul class="sk-list">
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>What Agentic AI is — AI systems that plan, reason, and complete multi-step tasks alone</li>
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>Claude's MCP (Model Context Protocol) — connecting AI to any tool, database, or API</li>
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>n8n — open-source agentic workflows with a visual drag-and-drop interface</li>
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>Building custom AI chatbots trained on a client's own data (RAG systems)</li>
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>Voiceflow — building AI chatbots for business websites (huge demand, great pay)</li>
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>VAPI + ElevenLabs — AI voice agents that handle phone calls automatically</li>
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>Lead generation and qualification agents — sell these to sales teams for £2k+</li>
+            <li><span class="sk-dot" style="background:var(--phase4)"></span>AI agents for appointment booking, customer support, and internal knowledge</li>
+          </ul>
+        </div>
+        <div class="ph-col">
+          <h4>Resources & Tools</h4>
+          <ul class="rs-list">
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">n8n (n8n.io) — free self-hosted</div><div class="rs-desc">The most powerful open-source agent workflow builder</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Voiceflow (voiceflow.com)</div><div class="rs-desc">Visually build AI chatbots — massive client demand right now</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">VAPI.ai + ElevenLabs</div><div class="rs-desc">Voice AI agents — automated phone systems for businesses</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Cole Medin + David Ondřej (YouTube)</div><div class="rs-desc">Best practical agentic AI tutorials for non-developers</div></div></li>
+            <li><span class="tag tpaid">Course</span><div><div class="rs-name">AI Jason — Agent Automation Course</div><div class="rs-desc">Project-based agentic AI specifically for beginners</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Anthropic Docs — MCP Guide (docs.anthropic.com)</div><div class="rs-desc">Official guide to Model Context Protocol — bookmark this</div></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ph-outcome o4">
+        <div class="po-lbl c4">✓ Phase 4 Milestone — End of Month 14</div>
+        <div class="po-txt">You can build an AI agent that autonomously handles real business tasks: customer support, lead qualification, appointment booking, and data processing. You have demonstrated the highest-demand freelance skill in the UK market for 2026–2027 and are charging £1,500–£5,000 per agent build.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="phase" id="p5">
+    <div class="phase-hd" onclick="toggleP(5)">
+      <div class="ph-num c5">05</div>
+      <div class="ph-meta">
+        <div class="ph-tag b5 c5">Launch</div>
+        <div class="ph-title">Business Launch & Scaling</div>
+        <div class="ph-sub">Launch your SaaS product or AI agency, land recurring clients, and build systems that generate income whether you work or not</div>
+      </div>
+      <div class="ph-dur"><div class="ph-months c5">4</div><div class="ph-mlbl">months</div></div>
+      <svg class="chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+    </div>
+    <div class="phase-bd">
+      <div class="ph-grid">
+        <div class="ph-col">
+          <h4>What You'll Learn</h4>
+          <ul class="sk-list">
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>Niche positioning — why targeting "estate agents in South London" beats "any business"</li>
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>Productising your services: selling the same solution repeatedly, not custom work</li>
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>Cold outreach at scale — using AI to personalise 100 emails in 20 minutes</li>
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>Launching a micro-SaaS: one problem, one solution, low build cost, recurring revenue</li>
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>Product Hunt and Indie Hackers launches — how to get your first 50 users for free</li>
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>Stripe + Lemon Squeezy: subscription billing and SaaS financial metrics</li>
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>Build-in-public strategy on LinkedIn — the single best marketing for UK founders</li>
+            <li><span class="sk-dot" style="background:var(--phase5)"></span>When and how to hire: VAs, sub-contractors, and your first team member</li>
+          </ul>
+        </div>
+        <div class="ph-col">
+          <h4>Resources & Tools</h4>
+          <ul class="rs-list">
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Indie Hackers (indiehackers.com)</div><div class="rs-desc">Community of solo founders — essential daily reading</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">Paul Graham Essays (paulgraham.com)</div><div class="rs-desc">Required reading for every founder. Free and timeless.</div></div></li>
+            <li><span class="tag tbook">Book</span><div><div class="rs-name">The Mom Test — Rob Fitzpatrick (~£10)</div><div class="rs-desc">Validate your SaaS idea properly before building</div></div></li>
+            <li><span class="tag tbook">Book</span><div><div class="rs-name">Company of One — Paul Jarvis (~£12)</div><div class="rs-desc">Why staying small and profitable beats scale for most founders</div></div></li>
+            <li><span class="tag ttool">Tool</span><div><div class="rs-name">Stripe + Lemon Squeezy</div><div class="rs-desc">Accept payments, subscriptions, and invoices globally</div></div></li>
+            <li><span class="tag tfree">Free</span><div><div class="rs-name">r/SaaS · r/Entrepreneur · r/AIAgents (Reddit)</div><div class="rs-desc">Real people sharing real wins and failures daily</div></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ph-outcome o5">
+        <div class="po-lbl c5">✓ Phase 5 Milestone — End of Month 18</div>
+        <div class="po-txt">You have a live product or recurring service generating real income. Either 3–5 agency retainer clients at £500–£1,500/month each, or a micro-SaaS with 20+ paying subscribers. Your AI skills are now a genuine, compounding business asset — and you're just getting started.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="padding-top:0">
+  <div class="eyebrow">Your AI Stack</div>
+  <h2>The Tools That Matter</h2>
+  <p class="lead">Every tool you'll use, mapped to the phase where you need it. Don't buy them all at once — use free tiers until that phase begins, then invest as the income arrives.</p>
+  <div class="tools-grid">
+    <div class="tool-card"><div class="ti" style="background:rgba(74,158,255,0.1)">🤖</div><div class="tn">Claude (Anthropic)</div><div class="tu">Your primary AI — best for deep thinking, writing, coding, and analysis. Use Pro.</div><div class="tp c1">Phase 1 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(74,158,255,0.1)">💬</div><div class="tn">ChatGPT (OpenAI)</div><div class="tu">General tasks, image generation, and the largest plugin/GPT ecosystem available.</div><div class="tp c1">Phase 1 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(74,158,255,0.1)">🔍</div><div class="tn">Perplexity AI</div><div class="tu">AI-powered research — replaces most Google searches with sourced, current answers.</div><div class="tp c1">Phase 1 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(167,139,250,0.1)">🔗</div><div class="tn">Make.com</div><div class="tu">No-code automation — connect any app to AI and sell workflows as a service.</div><div class="tp c2">Phase 2 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(167,139,250,0.1)">📋</div><div class="tn">Notion AI</div><div class="tu">Build client knowledge bases, SOPs, and project management systems visually.</div><div class="tp c2">Phase 2 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(52,211,153,0.1)">💻</div><div class="tn">Lovable.dev</div><div class="tu">Type your app idea, it builds the whole thing. The most transformative tool for beginners.</div><div class="tp c3">Phase 3 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(52,211,153,0.1)">⚡</div><div class="tn">Bolt.new</div><div class="tu">Full-stack apps in the browser — fast prototyping with no setup required at all.</div><div class="tp c3">Phase 3 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(52,211,153,0.1)">✏️</div><div class="tn">Cursor IDE</div><div class="tu">AI-assisted code editor — learn what the AI builds as you direct it as an architect.</div><div class="tp c3">Phase 3 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(251,146,60,0.1)">🔄</div><div class="tn">n8n</div><div class="tu">Build sophisticated AI agent workflows — open source, free to self-host.</div><div class="tp c4">Phase 4 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(251,146,60,0.1)">💬</div><div class="tn">Voiceflow</div><div class="tu">Visual chatbot builder — huge UK client demand, great project fees.</div><div class="tp c4">Phase 4 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(251,146,60,0.1)">🗣️</div><div class="tn">VAPI + ElevenLabs</div><div class="tu">Voice AI agents — build automated phone systems for businesses at £1k+ each.</div><div class="tp c4">Phase 4 →</div></div>
+    <div class="tool-card"><div class="ti" style="background:rgba(232,168,32,0.1)">💳</div><div class="tn">Stripe / Lemon Squeezy</div><div class="tu">Accept global payments and subscriptions — essential for SaaS and agency billing.</div><div class="tp c5">Phase 5 →</div></div>
+  </div>
+</section>
+
+<!-- INCOME -->
+<section id="money" style="padding-top:0">
+  <div class="eyebrow">Monetisation</div>
+  <h2>How You'll Make Money</h2>
+  <p class="lead">Both business paths — agency and SaaS — are completely viable from Croydon. Here's a realistic, researched breakdown of what people with your skills are earning in the UK right now.</p>
+  <div class="money-grid">
+    <div class="money-card">
+      <div class="mc-stripe" style="background:var(--phase2)"></div>
+      <div class="mc-tag c2">🚀 Fastest Path to Income</div>
+      <h3>AI Automation Agency</h3>
+      <p>Sell workflow automation to local South London businesses who still do things manually. Estate agents, solicitors, accountants, clinics — they all have repetitive processes and zero AI knowledge. You become their expert.</p>
+      <div class="earn">£500 – £3,000</div>
+      <div class="earn-lbl">per project (one-off build)</div>
+      <div style="margin-top:0.75rem"><div class="earn">£300 – £800</div><div class="earn-lbl">per month (ongoing maintenance)</div></div>
+      <div class="mc-foot">First income possible: <strong>Month 5–6</strong></div>
+    </div>
+    <div class="money-card">
+      <div class="mc-stripe" style="background:var(--phase4)"></div>
+      <div class="mc-tag c4">🤖 Highest Value Service</div>
+      <h3>AI Chatbot & Agent Builds</h3>
+      <p>Businesses pay premium prices for AI assistants trained on their own data — customer support bots, booking agents, lead qualification. One well-deployed agent can save a client £2k/month in staff time.</p>
+      <div class="earn">£1,500 – £8,000</div>
+      <div class="earn-lbl">per build (custom AI agent)</div>
+      <div style="margin-top:0.75rem"><div class="earn">£500 – £1,500</div><div class="earn-lbl">per month (hosted and maintained)</div></div>
+      <div class="mc-foot">First income possible: <strong>Month 11–13</strong></div>
+    </div>
+    <div class="money-card">
+      <div class="mc-stripe" style="background:var(--phase3)"></div>
+      <div class="mc-tag c3">💡 The Long Game</div>
+      <h3>Micro-SaaS Product</h3>
+      <p>Build one focused tool that solves one specific pain point for a niche audience. Target £29–£99/month subscriptions. 50 customers = £1,500–£5,000/month in largely passive, recurring revenue.</p>
+      <div class="earn">£29 – £299</div>
+      <div class="earn-lbl">per user / per month</div>
+      <div style="margin-top:0.75rem"><div class="earn">£1k – £15k+</div><div class="earn-lbl">per month at scale (50–100 subscribers)</div></div>
+      <div class="mc-foot">First revenue possible: <strong>Month 14–18</strong></div>
+    </div>
+    <div class="money-card">
+      <div class="mc-stripe" style="background:var(--phase5)"></div>
+      <div class="mc-tag c5">📈 Full Scale</div>
+      <h3>Productised AI Agency</h3>
+      <p>Once you have 2–3 case studies and a repeatable process, package everything into clear service tiers. Sell the same solution to the same type of client, over and over. This is how agencies reach £10k/month+.</p>
+      <div class="earn">£3,000 – £10,000</div>
+      <div class="earn-lbl">per month (3–5 retainer clients)</div>
+      <div style="margin-top:0.75rem"><div class="earn">£50k – £120k+</div><div class="earn-lbl">per year (with systems in place)</div></div>
+      <div class="mc-foot">Realistic target: <strong>Month 18–24</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY -->
+<section id="weekly" style="padding-top:0">
+  <div class="eyebrow">Your Weekly Routine</div>
+  <h2>1–3 Hours Done Right</h2>
+  <p class="lead">The key is consistency, not intensity. Here's exactly how to structure your limited time each week so that every session compounds on the last.</p>
+  <div class="notice">
+    <div class="notice-ico">⏱️</div>
+    <div class="notice-txt"><strong>The 3-Session Rule:</strong> Aim for 3 × 45-minute focused sessions per week. Phone down, notifications off. One topic per session. AI learning compounds faster than almost anything — 45 minutes of deliberate practice beats 3 hours of distracted watching every single time.</div>
+  </div>
+  <div class="week-grid">
+    <div class="week-slot">
+      <div class="ws-day">Session 1 — Learn</div>
+      <div class="ws-act">Study a concept</div>
+      <div class="ws-desc">Watch a tutorial, read a guide, or work through official documentation for your current phase</div>
+      <div class="ws-time">45 min</div>
+    </div>
+    <div class="week-slot">
+      <div class="ws-day">Session 2 — Build</div>
+      <div class="ws-act">Make something real</div>
+      <div class="ws-desc">Apply what you learned — build an automation, a prompt, a workflow, or a small tool</div>
+      <div class="ws-time">45–60 min</div>
+    </div>
+    <div class="week-slot">
+      <div class="ws-day">Session 3 — Share</div>
+      <div class="ws-act">Document & publish</div>
+      <div class="ws-desc">Write a LinkedIn post, share in a community, or document what you built for your portfolio</div>
+      <div class="ws-time">30 min</div>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem;padding:1.5rem 2rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px">
+    <div class="eyebrow" style="margin-bottom:0.6rem">The Build-in-Public Advantage</div>
+    <p style="font-size:0.88rem;color:var(--text);line-height:1.75;max-width:720px">Document your journey publicly on LinkedIn. Post weekly about what you're learning, what you've built, and what's working. In the UK AI space, <strong style="color:var(--cream)">sharing your learning IS a business strategy</strong> — clients find you, collaborators reach out, and your skills become provably real. Croydon and Greater London have thousands of SMEs within reach. Being known as "the local AI expert" is a massive, underused competitive advantage.</p>
+  </div>
+</section>
+
+<!-- MINDSET -->
+<section style="padding-top:0">
+  <div class="eyebrow">Success Principles</div>
+  <h2>The Mindset That Wins</h2>
+  <p class="lead">Technical skill is only half the equation. These six principles separate people who talk about AI from people who build real businesses from it.</p>
+  <div class="mind-grid">
+    <div class="mind-card"><div class="mind-ico">🎯</div><h4>Niche Before Scaling</h4><p>Pick one type of client (e.g. dental clinics in South London) and become the AI expert for them. Generalists struggle — specialists command premium prices and get referrals automatically.</p></div>
+    <div class="mind-card"><div class="mind-ico">🔁</div><h4>Consistency Over Intensity</h4><p>Three focused sessions per week beats one exhausting 8-hour weekend. AI compounds through repetition. Your 1–3 hours per week is genuinely enough — if you protect it from distractions.</p></div>
+    <div class="mind-card"><div class="mind-ico">💸</div><h4>Charge Early, Not Later</h4><p>Don't wait to feel "ready." Try to charge your first client by Month 5. Real feedback from real money teaches you 10× faster than any course, and you'll never feel fully ready without it.</p></div>
+    <div class="mind-card"><div class="mind-ico">🧪</div><h4>Build, Don't Just Plan</h4><p>Every week, ship something real. Not a plan to build something — the actual thing. AI tools mean your MVP can go live in hours, not months. Speed of experimentation is your biggest advantage.</p></div>
+    <div class="mind-card"><div class="mind-ico">🌐</div><h4>Local Is a Goldmine</h4><p>Croydon and Greater London have thousands of SMEs that know they need AI but have no idea where to start. Five local retainer clients at £600/month is £3,600/month — and they're right on your doorstep.</p></div>
+    <div class="mind-card"><div class="mind-ico">📰</div><h4>Stay Current, Daily</h4><p>AI moves faster than any technology in history. Spend 10 minutes each morning on TLDR AI, The Rundown AI, or Ben's Bites newsletters. Awareness of new tools is a genuine competitive moat.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:1rem">
+    <span style="font-family:'Cormorant Garant',serif;font-size:1.3rem;font-weight:700;color:var(--cream)">AI<span style="color:var(--gold)">Mastery</span></span>
+  </div>
+  <p style="margin-bottom:0.4rem">Personalised for <strong style="color:var(--cream)">Croydon, England</strong> · Generated May 2026 · Powered by Claude Sonnet 4.6</p>
+  <p style="color:var(--text-dim)">Calibrated for a complete beginner at 1–3 hrs/week. At 3 hrs/week consistently, compress each phase by ~20%.</p>
+  <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:0.75rem">
+    <strong style="color:var(--cream)">Recommended daily reading:</strong>
+    <span style="color:var(--text-dim);margin-left:8px">TLDR AI · The Rundown AI · Ben's Bites · Indie Hackers · r/SaaS</span>
+  </div>
+</footer>
+
+<script>
+  function toggleP(n) {
+    const el = document.getElementById('p' + n);
+    if (el) el.classList.toggle('open');
+  }
+  // Scroll-based nav highlight
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--gold)' : ''; });
+  });
+</script>
+</body>
+</html>
